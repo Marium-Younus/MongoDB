@@ -1,0 +1,7 @@
+There are three users of the system at the moment: 
+Admin, Visitors, and Vet (who treated animals). The system stores login credentials for users. 
+It maintains information about individual animals residing in the zoo; each animal belongs to a 
+type, such as Mammal, Birds, Reptiles and Amphibians. Additionally, the diseases of animals should be maintained.
+
+Furthermore, the data of treatments administered to animals by the vet will be stored. This includes details of each treatment, such as the treatment description, associated animal, and vet.
+The system should have a collections that stores ticket prices according to age groups. Visitors can purchase multiple tickets at once, and all those tickets should be stored against a single order ID with the total amount, date, and time, etc.

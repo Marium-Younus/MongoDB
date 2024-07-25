@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "65f3e612ffc9bb099e628ed6"
+  },
+  "visitor_id": {
+    "$oid": "65f3e137ffc9bb099e628eae"
+  },
+  "tickets": [
+    {
+      "age": {
+        "$oid": "65f3e36dffc9bb099e628ec9"
+      },
+      "qty": 1
+    },
+    {
+      "age": {
+        "$oid": "65f3e40affc9bb099e628ecc"
+      },
+      "qty": 1
+    }
+  ],
+  "total_amount": 700,
+  "date_time": "2022-12-12T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "65f3e689ffc9bb099e628edd"
+  },
+  "visitor_id": {
+    "$oid": "65eeb9636e69b30490699782"
+  },
+  "tickets": [
+    {
+      "age": "65f3e36dffc9bb099e628ec9",
+      "qty": 2
+    },
+    {
+      "age": "65f3e377ffc9bb099e628eca",
+      "qty": 2
+    }
+  ],
+  "total_amount": 1400,
+  "date_time": "2022-12-12T00:00:00.000Z"
+}]

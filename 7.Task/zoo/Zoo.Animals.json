@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "65eeb9c46e69b30490699787"
+  },
+  "Name": "Rio",
+  "Type": "Bird",
+  "Diseses": [
+    "Bird Flu",
+    "Lung Cancer"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65f3e1d9ffc9bb099e628eb1"
+  },
+  "Name": "Minki",
+  "Type": "Mamel",
+  "Diseses": [
+    "heart issue"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65f3e1edffc9bb099e628eb2"
+  },
+  "Name": "Alpha",
+  "Type": "Mamel",
+  "Diseses": [
+    "Bird Flu"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65f3ef45ffc9bb099e628f08"
+  },
+  "Name": "beta",
+  "Type": "Mamel",
+  "Diseses": [
+    "heart issue"
+  ]
+}]

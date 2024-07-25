@@ -1,0 +1,20 @@
+https://pecl.php.net/package/mongodb/1.18.1/windows
+
+Make sure to pick the correct one depending on:
+
+	1) the PHP version that is installed with your XAMPP,
+	2) Architecture x86 or x64,
+	3) whether Thread Safety is enabled or disabled.
+	When Thread Safety is enabled, you need to download Thread Safe (TS) version.
+
+--installation steps
+
+Download the relevant DLL and unzip it. Place the php_mongodb.dll file in your ext folder of xampp/php
+Now place the following code in your php.ini file and restart xampp
+
+extension=php_mongodb.dll
+
+Now goto phpinfo of your xampp localhost and you'll find mongodb installed
+
+
+https://www.php.net/manual/en/class.mongodb-driver-manager.php

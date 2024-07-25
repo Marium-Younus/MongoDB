@@ -1,0 +1,94 @@
+db.Data.insertMany([{Name:"Saba", Gender: "F", Position: "Head", Salary: 90000 ,Qualification: "PHD" , Age : 60, Experience : 10},
+{Name:"Ali", Gender: "M", Position: "Faculty", Salary: 45000 ,Qualification: "MS" , Age : 30, Experience : 2},
+{Name:"Arif", Gender: "M", Position: "Faculty", Salary: 50000 ,Qualification: "BS" , Age : 40, Experience : 5},
+{Name:"Sana", Gender: "F", Position: "Coordinator", Salary: 55000 ,Qualification: "MS" , Age : 35, Experience : 3},
+{Name:"Ebad", Gender: "M", Position: "Manager", Salary: 70000 ,Qualification: "MS" , Age : 33, Experience : 5}])
+
+
+
+
+
+
+
+1. Calculate the average salary for each distinct post.
+db.Data.aggregate([
+  { $group: { _id: "$Position", avgSalary: { $avg: "$Salary" } } }
+])
+
+2. Calculate the average salary for employees who have the post "Faculty".
+db.Data.aggregate([ { $match: { Position: "Faculty" } }, { $group: { _id: null, avgSalary: { $avg: "$Salary" } } }] )
+
+3. Calculate the average age of all employees.
+db.Data.aggregate([ { $group: { _id: null, avgAge: { $avg: "$Age" } } }] )
+
+
+4. Find the maximum salary for each level of experience.
+db.Data.aggregate([
+  { $group: { _id: "$Experience", maxSalary: { $max: "$Salary" } } }
+])
+
+5. Find the total experience for each distinct post.
+db.Data.aggregate([
+  { $group: { _id: "$Position", totalExperience: { $sum: "$Experience" } } }
+])
+
+
+6. Count the number of employees for each level of experience.
+db.Data.aggregate([
+  { $group: { _id: "$Experience", count: { $sum: 1 } } }
+])
+
+
+7. Calculate the average salary and average age for each distinct post.
+db.Data.aggregate([
+  { $group: { _id: "$Position", avgSalary: { $avg: "$Salary" }, avgAge: { $avg: "$Age" } } }
+])
+
+8. Find the total experience for employees whose salary is greater than 100,000.
+db.Data.aggregate([
+  { $match: { Salary: { $gt: 100000 } } },
+  { $group: { _id: null, totalExperience: { $sum: "$Experience" } } }
+])
+
+9. Count the number of employees below the age of 25 for each post.
+db.Data.aggregate([
+  { $match: { Age: { $lt: 25 } } },
+  { $group: { _id: "$Position", count: { $sum: 1 } } }
+])
+
+10. Calculate the average salary for employees with at least 5 years of experience
+db.Data.aggregate([
+  { $match: { Experience: { $gte: 5 } } },
+  { $group: { _id: null, avgSalary: { $avg: "$Salary" } } }
+])
+
+
+11. Count the number of employees with qualifications MS.
+db.Data.aggregate([
+  { $match: { Qualification:"MS" } },
+  { $group: { _id: null, count: { $sum: 1 } } }
+])
+
+12. Calculate the average salary for employees with thw post of Faculty with at least 2 years of experience.
+db.Data.aggregate([
+  { $match: { Position: "Faculty", Experience: { $gte: 2 } } },
+  { $group: { _id: null, avgSalary: { $avg: "$Salary" } } }
+])
+
+13. Find the total salary given to all employees below the age of 30 with post of Faculty
+db.Data.aggregate([
+  { $match: { Position:"Faculty", Age: { $lt: 30 } } },
+  { $group: { _id: null, totalSalary: { $sum: "$Salary" } } }
+])
+
+14. Count the number of employees with experience between 3 and 6 years.
+db.Data.aggregate([
+  { $match: { Experience: { $gte: 3, $lte: 6 } } },
+  { $group: { _id: null, count: { $sum: 1 } } }
+])
+
+15. Calculate the average age and average salary for employees with the post Faculty
+db.Data.aggregate([
+  { $match: { Position:"Faculty" } },
+  { $group: { _id: null, avgAge: { $avg: "$Age" }, avgSalary: { $avg: "$Salary" } } }
+])

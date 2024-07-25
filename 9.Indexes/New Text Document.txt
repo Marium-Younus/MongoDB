@@ -1,0 +1,7 @@
+db.COLLECTION_NAME.createIndex({KEY:1})
+multi key
+db.mycol.createIndex({"title":1,"description":-1})
+drop index
+db.mycol.dropIndexes({"title":1,"description":-1})
+get indexes:
+db.COLLECTION_NAME.getIndexes()

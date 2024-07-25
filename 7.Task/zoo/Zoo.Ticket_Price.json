@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "65f3e36dffc9bb099e628ec9"
+  },
+  "age_group": "adult",
+  "price": 500
+},
+{
+  "_id": {
+    "$oid": "65f3e377ffc9bb099e628eca"
+  },
+  "age_group": "teen",
+  "price": 400
+},
+{
+  "_id": {
+    "$oid": "65f3e3fcffc9bb099e628ecb"
+  },
+  "age_group": "child",
+  "price": 300
+},
+{
+  "_id": {
+    "$oid": "65f3e40affc9bb099e628ecc"
+  },
+  "age_group": "toddler",
+  "price": 200
+}]

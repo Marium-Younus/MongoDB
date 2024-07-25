@@ -1,0 +1,20 @@
+1. Find number of users of each role
+------------------------------------
+2. Find ticket prices of adults
+--------------------------------------------------
+3. Calculate the total amount spent by each visitor
+-------------------------------------------------
+4. Find the order details of visitor id : 121
+-----------------------------------------------------
+5. Count the number of animals for each type
+-----------------------------------------------------
+6. Find all animals with the desease of Bird Flu
+-------------------------------------------------
+7. Count the number of animals for each Diseses 
+-------------------------------------------------
+8. Find treatments done on Fluffy
+------------------------------------------------
+
+
+
+

@@ -1,0 +1,58 @@
+Relationships in MongoDB represent how various documents are logically related to each other. Relationships can be modeled via Embedded and Referenced approaches. Such relationships can be either 1:1, 1:N, N:1 or N:N.
+
+
+Modeling Embedded Relationships
+db.users.insert({
+	{
+		"_id":ObjectId("52ffc33cd85242f436000001"),
+		"contact": "987654321",
+		"dob": "01-01-1991",
+		"name": "Tom Benzamin",
+		"address": [
+			{
+				"building": "22 A, Indiana Apt",
+				"pincode": 123456,
+				"city": "Los Angeles",
+				"state": "California"
+			},
+			{
+				"building": "170 A, Acropolis Apt",
+				"pincode": 456789,
+				"city": "Chicago",
+				"state": "Illinois"
+			}
+		]
+	}
+})
+
+The drawback is that if the embedded document keeps on growing too much in size, it can impact the read/write performance.
+
+Modeling Referenced Relationships
+
+--address document
+{
+   "_id":ObjectId("52ffc4a5d85242602e000000"),
+   "building": "22 A, Indiana Apt",
+   "pincode": 123456,
+   "city": "Los Angeles",
+   "state": "California"
+} 
+
+--users document
+{
+   "_id":ObjectId("52ffc33cd85242f436000001"),
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin",
+   "address_ids": [
+      ObjectId("52ffc4a5d85242602e000000"),
+      ObjectId("52ffc4a5d85242602e000001")
+   ]
+}
+
+--query
+>var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
+>var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
+
+
+

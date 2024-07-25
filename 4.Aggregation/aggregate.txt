@@ -1,0 +1,26 @@
+Aggregate:
+the aggregate funciton takes an arrray of object as in input
+aggregate( [ {}, {} ] )
+these objects are called stages of pipelines
+
+1st sgatge acts as the data resiurce fir the second stage
+
+-> agar condition tou match use karing
+-> agar condition hai but each of the result chaiye tou group use kareingy
+
+-------------------------
+
+what if mujhe un login ka count chaoiye jinki age 40 sy zada hai
+
+
+..........................
+
+Match 
+Count Match
+Group
+Group by field
+Group by null
+sum as count in group by
+sum of age
+avg
+avd of all posts

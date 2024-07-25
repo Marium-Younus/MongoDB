@@ -1,0 +1,93 @@
+----1----
+{_id:0,title:1,directors:1}
+----2--
+db.movies.find({ "countries": "USA" })
+----3-----
+db.movies.find({ "num_mflix_comments": { $gt: 100 } })
+--------4------------
+db.movies.find({ "genres": "Western" }, { "title": 1, "genres": 1, "_id": 0 })
+
+----6---
+db.movies.find({
+  "released": { $gt: ISODate("1910-01-01") },
+  "runtime": { $gt: 60 },
+  "directors": "John Smith"
+})
+----7---
+db.movies.find({
+  "released": { $gte: ISODate("1910-01-01"), $lte: ISODate("1920-12-31") },
+  "genres": { $in: ["Crime", "Thriller"] },
+  "rated": { $ne: "R" }
+})
+----8--
+db.movies.find({
+  "cast": "Tom Hanks",
+  "released": { $gt: ISODate("1915-01-01") }
+}).sort({ "runtime": -1 })
+
+----9--
+db.movies.aggregate([
+  { $unwind: "$genres" },
+  { $group: { _id: "$genres" } }
+])
+----10---
+db.movies.aggregate([
+  { $unwind: "$genres" },
+  { $group: { _id: "$genres", averageRuntime: { $avg: "$runtime" } } }
+])
+----11---
+db.movies.aggregate([
+  { $group: { _id: { $year: "$released" }, movies: { $push: "$title" } } },
+  { $sort: { "_id": 1 } }
+])
+----12------
+db.movies.aggregate([
+  { $unwind: "$directors" },
+  { $group: { _id: "$directors", count: { $sum: 1 } } }
+])
+----13--------
+db.movies.find({ "awards.wins": { $gt: 0 } })
+----14-----
+db.movies.find({ "awards.wins": { $gt: 0 }, "awards.nominations": 0 })
+----15---
+db.movies.find({ "tomatoes.viewer.rating": { $gte: 2.7 } })
+----------16-------------
+db.movies.find({ "directors": { $size: 2 } })
+------17----------
+db.movies.find({ "genres": { $nin: ["Western", "Drama"] } })
+---18----
+screenshot
+---19---
+db.movies.aggregate([
+  {
+    $unwind: "$directors" // Deconstructs the directors array
+  },
+  {
+    $group: {
+      _id: "$directors", // Groups by directors
+      count: { $sum: 1 } // Counts the occurrences of each director
+    }
+  }
+])
+----20----
+db.movies.aggregate([
+  {
+    $unwind: "$directors" // Deconstructs the directors array
+  },
+  {
+    $group: {
+      _id: "$directors", // Groups by directors
+      count: { $sum: 1 }, // Counts the occurrences of each director
+      avgRating: { $avg: "$imdb.rating" } // Calculates the average IMDb rating for each director
+    }
+  },
+  {
+    $match: {
+      count: { $gte: 3 } // Filters directors who have directed at least 3 movies
+    }
+  }
+])
+
+
+
+

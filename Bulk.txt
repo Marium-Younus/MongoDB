@@ -1,0 +1,31 @@
+db.category.insertMany([{_id:101, name:"Grocery"},{_id:102,name:"Beverages"},{_id:103,name:"Cosmetics"}])   
+
+var dt = [{_id:104,name:"Clothing"}, {_id:105,name: "Stationary"}]
+db.category.insertMany(dt);
+
+db.category.find()
+
+db.std.bulkWrite([ { insertOne: {_id:3,name:"David",age:20} } , { updateOne: { "filter": { _id:1 }, "update": {$set: {name: "Nancy"}}}} , {deleteMany: {"filter": {_id: 2} } } ])   
+
+db.books.findOne()
+db.books.find({title:"Who killed You?"})
+db.books.find({},{author: 1})
+db.books.find({},{_id:0, author: 1})
+db.books.find({},{_id:0,title:1,author: 1})
+db.books.find({ price: {$lt: 1000}})
+db.books.find({ price: {$lt: 1000}}, {_id:0,title:1,author:1})
+db.books.find( {$and: [{price: {$lt: 1000} }, { publisher: "ABC Publishers"} ] } )
+db.books.find( {$and: [{price: {$lt: 1000} }, { publisher: "ABC Publishers"} ] },  {_id:0, title:1,price:1} )
+
+db.books.find().limit(3)
+db.books.find({publisher: "XYZ Publishers"}).limit(1)
+db.books.find().sort({price:1})			//ascending
+db.books.find().sort({price:-1})		//descending
+db.books.find().skip(2)  
+db.books.find().limit(3).skip(1)
+db.books.find( {price: {$in: [765,1100]}})
+db.books.distinct("genre")
+db.students.find({name: {$regex : /^U/i}}) 
+
+
+

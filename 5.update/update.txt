@@ -1,0 +1,22 @@
+
+db.Students.updateMany      ({ condition }, { $set: { change }})
+db.Students.findOneAndUpdate({ condition }, { $set: { change }})
+db.Students.updateOne       ({ condition }, { $set: { change }}) 
+
+$set: Sets the value of a field
+$unset: Removes the field from the document
+$inc: Increments the field value
+
+
+
+
+
+
+
+
+Array
+The following operators assist with updating arrays.
+$addToSet: Adds distinct elements to an array
+$pop: Removes the first or last element of an array
+$pull: Removes all elements from an array that match the query
+$push: Adds an element to an array
